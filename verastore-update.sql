@@ -162,7 +162,24 @@ values
 (1, 'Disimpan'),
 (2, 'Dibayar');
 
+-- produk
+create view vw_viewproduk
+as
+select s.id_stok, concat(k. nama,' ', p.nama) as nama_produk, k.deskripsi,  s.size, p.harga, s.stok  
+from produk p 
+join stok s  on s.id_produk = p.id_produk
+join kategori k on k.id_kategori = p.id_kategori;    
 
+-- transaksi
+create view vw_viewtransaksi
+as
+select t.id_transaksi, c.nama_lengkap, t.tgl_transaksi , s.nama as status_pembayaran, t.harga_awal, t.harga_ongkir, t.total_berat, t.harga_total, ku.nama as nama_kurir
+from transaksi t join transaksi_item ti on t.id_transaksi = ti.id_transaksi
+join produk p on  ti.id_produk = p.id_produk
+join kategori k on k.id_kategori = p.id_kategori
+join kurir ku on ku.id_kurir = t.id_kurir
+join customer c on c.id_customer = t.id_customer
+join rf_status s on t.status_bayar = s.id_status;
 
 
 
