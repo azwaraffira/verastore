@@ -55,18 +55,22 @@ values
 (11, 5 , null, 50),
 (12, 6 , null, 50);
 
-
+-- drop table user
 create table user(
 id_user int(6) NOT NULL auto_increment,
 nama varchar(50) NOT NULL,
 username varchar(10) NOT NULL,
 passwd varchar(100) NOT NULL, 
+level varchar(100),
 PRIMARY KEY (id_user)
 );
 
 insert into user 
 value
-(1, 'admin','admin', 'admin');
+(1, 'admin','admin', 'admin',''),
+(2, 'Azwar','azwar', 'azwar','Administrator'),
+(3, 'Andreas','andreas', 'alskdj12','user');
+
 
 
 create table customer(
