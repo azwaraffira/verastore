@@ -23,10 +23,10 @@ if (isset($_GET['perPage']) && !empty($_GET['perPage']))
 	$dataPerPage = (int)$_GET['perPage'];
 
 // tabel yang akan diambil datanya
-$table = 'transaksi';
+$table = 'vw_transaksi';
 
 // ambil data
-$dataTable = getTableData($koneksi, $table, $page, $dataPerPage);
+$dataTable = getViewData($koneksi, $table, $page, $dataPerPage);
 
 include "../templates/header.php";
 ?>
@@ -69,9 +69,13 @@ include "../templates/header.php";
 							<thead>
 								<tr>
 									<th style="width: 50px;">No</th>
-									<th style="width: 50px;">Waktu</th>
-									<th style="width: 110px;">Status</th>
-									<th style="width: 110px;">Total</th>
+									<th style="width: 50px;">Nama Customer</th>
+									<th style="width: 110px;">Tanggal Transaksi</th>
+									<th style="width: 110px;">Harga Ongkir</th>
+									<th style="width: 110px;">Total Berat</th>
+									<th style="width: 110px;">Nama Kurir</th>
+									<th style="width: 110px;">Total Bayar</th>
+									<th style="width: 110px;">Status Pembayaran</th>
 									<th style="width: 110px;">Aksi</th>
 
 								</tr>
@@ -84,12 +88,17 @@ include "../templates/header.php";
 								?>
 								<tr>
 								<th scope="row"><?php echo $no; ?></th>
-								<td><?php echo $data['waktu'];?></td>
-								<td><?php echo $data['status'];?></td>
-								<td>Rp. <?php echo $data['total'];?></td>
-								<td><a href="<?php echo $admin_url; ?>transaksi/form_edit.php?id_transaksi=<?php echo $data['id_transaksi'];?>">
+								<td><?php echo $data['nama_lengkap'];?></td>
+								<td><?php echo $data['tgl_transaksi'];?></td>
+								<td>Rp. <?php echo $data['harga_ongkir'];?></td>
+								<td><?php echo $data['total_berat'];?> gram</td>
+								<td><?php echo $data['nama_kurir'];?></td>
+								<td>Rp. <?php echo $data['harga_total'];?></td>
+								<td><?php echo $data['status_pembayaran'];?></td>
+
+								<td><a href="<?php echo $admin_url; ?>transaksi/item.php?id_transaksi=<?php echo $no;?>">
 								<button class="btn btn-warning">
-									<i class="fa fa-edit"></i>
+									Detail
 								</button></a>
 								
 								<a href="<?php echo $admin_url; ?>transaksi/hapus.php?id_transaksi=<?php echo $data['id_transaksi'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">

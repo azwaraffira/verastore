@@ -7,7 +7,7 @@
 	$nama_kategori = $_POST['nama_kategori'];
 	// query untuk menyimpan ke tabel tbl_kategori
 	
-	$querySimpan = mysqli_query($koneksi, "INSERT INTO tbl_kategori (nama_kategori) VALUES ('$nama_kategori')");
+	$querySimpan = mysqli_query($koneksi, "INSERT INTO kategori (nama) VALUES ('$nama_kategori')");
 
 	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar kategori
 	if ($querySimpan) {

@@ -23,7 +23,7 @@ if (isset($_GET['perPage']) && !empty($_GET['perPage']))
 	$dataPerPage = (int)$_GET['perPage'];
 
 // tabel yang akan diambil datanya
-$table = 'user';
+$table = 'customer';
 
 // ambil data
 $dataTable = getTableData($koneksi, $table, $page, $dataPerPage);
@@ -69,12 +69,13 @@ include "../templates/header.php";
 							<thead>
 								<tr>
 									<th style="width: 50px;">No</th>
-									<th style="width: 190px;">Nama User</th>
+									<th style="width: 190px;">Nama</th>
 									<th style="width: 150px;">Telepon</th>
-									<th>Alamat</th>
 									<th style="width: 110px;">E-mail</th>
-									<th style="width: 110px;">Username</th>
-									<th style="width: 110px;">Password</th>
+									<th style="width: 110px;">alamat</th>
+									<th style="width: 110px;">kota</th>
+									<th style="width: 110px;">provinsi</th>
+									<th style="width: 110px;">kode pos</th>
 									<th style="width: 110px;">Aksi</th>
 								</tr>
 							</thead>
@@ -86,12 +87,13 @@ include "../templates/header.php";
 								?>
 								<tr>
 								<th scope="row"><?php echo $no; ?></th>
-								<td><?php echo $data['nama_user'];?></td>
-								<td><?php echo $data['telepon'];?></td>
-								<td><?php echo $data['alamat'];?></td>
+								<td><?php echo $data['nama_lengkap'];?></td>
+								<td><?php echo $data['telp'];?></td>
 								<td><?php echo $data['email'];?></td>
-								<td><?php echo $data['username'];?></td>
-								<td><?php echo $data['password'];?></td>
+								<td><?php echo $data['alamat'];?></td>
+								<td><?php echo $data['kota'];?></td>
+								<td><?php echo $data['provinsi'];?></td>
+								<td><?php echo $data['kode_pos'];?></td>
 								<td><a href="<?php echo $admin_url; ?>user/form_edit.php?id_user=<?php echo $data['id_user'];?>">
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>

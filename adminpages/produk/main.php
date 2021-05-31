@@ -23,10 +23,10 @@ if (isset($_GET['perPage']) && !empty($_GET['perPage']))
 	$dataPerPage = (int)$_GET['perPage'];
 
 // tabel yang akan diambil datanya
-$table = 'tbl_produk';
+$table = 'vw_produk';
 
 // ambil data
-$dataTable = getTableData($koneksi, $table, $page, $dataPerPage);
+$dataTable = getViewData($koneksi, $table, $page, $dataPerPage);
 
 include "../templates/header.php";
 ?>
@@ -72,7 +72,9 @@ include "../templates/header.php";
 									<th style="width: 190px;">Nama Produk</th>
 									<th style="width: 150px;">Gambar</th>
 									<th style="width: 110px;">Harga</th>
-									<th>Deskripsi</th>
+									<th style="width: 150px;">Deskripsi</th>
+									<th style="width: 110px;">Size</th>
+									<th style="width: 110px;">Stok</th>
 									<th style="width: 110px;">Aksi</th>
 
 								</tr>
@@ -86,9 +88,12 @@ include "../templates/header.php";
 								<tr>
 								<th scope="row"><?php echo $no; ?></th>
 								<td><?php echo $data['nama_produk'];?></td>
+								<!--test gambar-->
 								<td><img src="../../file/produk/<?php echo $data['gambar']; ?>" width='130px' height='100px'/></td>
 								<td>Rp. <?php echo $data['harga'];?></td>
 								<td><?php echo $data['deskripsi'];?></td>
+								<td><?php echo $data['size'];?></td>
+								<td><?php echo $data['stok'];?></td>
 								<td><a href="<?php echo $admin_url; ?>produk/form_edit.php?id_produk=<?php echo $data['id_produk'];?>">
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>

@@ -8,7 +8,7 @@ include "../../lib/config_web.php";
 include "../../lib/koneksi.php";
 
 $id_kategori = $_GET['id_kategori'];
-$query = mysqli_query($koneksi, "SELECT * FROM tbl_kategori WHERE id_kategori='$id_kategori'");
+$query = mysqli_query($koneksi, "SELECT * FROM kategori WHERE id_kategori='$id_kategori'");
 
 $dataKategori = mysqli_fetch_array($query); 
 
@@ -38,7 +38,7 @@ include "../templates/header.php"; ?>
 		<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nama Kategori <span class="required">*</span>
 		</label>
 		<div class="col-md-10 col-sm-10 col-xs-12">
-		  <input type="text" id="first-name" name="nama_kategori" value="<?php echo $dataKategori['nama_kategori'];?>" required="required" class="form-control col-md-7 col-xs-12">
+		  <input type="text" id="first-name" name="nama_kategori" value="<?php echo $dataKategori['nama'];?>" required="required" class="form-control col-md-7 col-xs-12">
 		</div>
 	  </div>
 

@@ -3,7 +3,7 @@
     include "../../lib/koneksi.php";
 
     $idKategori = $_GET['id_kategori'];
-    $queryHapus = mysqli_query($koneksi, "DELETE FROM tbl_kategori WHERE id_kategori='$idKategori'");
+    $queryHapus = mysqli_query($koneksi, "DELETE FROM kategori WHERE id_kategori='$idKategori'");
     if ($queryHapus) {
         echo "<script> alert('Data Kategori Berhasil Dihapus'); window.location = '$admin_url'+'kategori/main.php';</script>";
     } else {

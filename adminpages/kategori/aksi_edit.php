@@ -8,7 +8,7 @@
 	$nama_kategori = $_POST['nama_kategori'];
 	// query untuk mengubah ke tabel tbl_kategori
 	
-	$querySimpan = mysqli_query($koneksi, "UPDATE tbl_kategori SET nama_kategori='$nama_kategori' WHERE id_kategori='$id_kategori'");
+	$querySimpan = mysqli_query($koneksi, "UPDATE kategori SET nama_kategori='$nama_kategori' WHERE id_kategori='$id_kategori'");
 
 	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar kategori
 	if ($querySimpan) {

@@ -47,7 +47,9 @@
               </div>
               <div class="profile_info">
                 <span>Welcome,</span>
-                <h2>Azwar</h2>
+                <h2><?php
+                echo $_SESSION['username'];
+                ?></h2>
               </div>
             </div>
             <!-- /menu profile quick info -->
@@ -57,26 +59,26 @@
             <!-- sidebar menu -->
             <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
               <div class="menu_section">
-                <h3>Admin</h3>
+                <h3><?php
+                echo $_SESSION['level'];
+                ?></h3>
                 <ul class="nav side-menu">
-				<?php if($_SESSION['level']=="O"){ ?>
+				<?php if($_SESSION['level']=="user"){ ?>
 				 <li><a href="<?php echo $admin_url; ?>home/main.php"><i class="fa fa-home"></i> Home </a></li>
 					          <li><a href="#"><i class="fa fa-cc"></i> Order </a></li>
 				   <li><a href="#"><i class="fa fa-money"></i> Penjualan </a></li>
-				    <li><a href="#"><i class="fa fa-user"></i> User </a></li>
+				    <li><a href="#"><i class="fa fa-user"></i> Customer </a></li>
 					<li><a href="../logout.php"><i class="fa fa-sign-out"></i> LogOut </a></li>
 				
 				<?php } else { ?>
                   <li><a href="<?php echo $admin_url; ?>home/main.php"><i class="fa fa-home"></i> Home </a></li>
-				   <li><a href="<?php echo $admin_url; ?>kategori/main.php"><i class="fa fa-th"></i> Kategori </a></li>
+				<li><a href="<?php echo $admin_url; ?>kategori/main.php" ?><i class="fa fa-th"></i> Kategori </a></li>
 				    <li><a href="<?php echo $admin_url; ?>produk/main.php"><i class="fa fa-camera"></i> Produk </a></li>
-					
-					          <li><a href="<?php echo $admin_url; ?>transaksi/main.php"><i class="fa fa-cc"></i> Transaksi </a></li>
-				   <li><a href="<?php echo $admin_url; ?>det_transaksi/main.php"><i class="fa fa-money"></i> Det_transaksi </a></li>
-				    <li><a href="<?php echo $admin_url; ?>user/main.php"><i class="fa fa-user"></i> User </a></li>
-            <li><a href="<?php echo $admin_url; ?>tujuan/main.php"><i class="fa fa-cc"></i> Tujuan </a></li>
+					  <li><a href="<?php echo $admin_url; ?>transaksi/main.php"><i class="fa fa-cc"></i> Transaksi </a></li>
+				    <li><a href="<?php echo $admin_url; ?>user/main.php"><i class="fa fa-user"></i> Customer </a></li>
+           
             <li><a href="<?php echo $admin_url; ?>kurir/main.php"><i class="fa fa-cc"></i> Kurir </a></li>
-            <li><a href="<?php echo $admin_url; ?>ongkir/main.php"><i class="fa fa-cc"></i> Ongkir </a></li>
+           
 					<li><a href="../logout.php"><i class="fa fa-sign-out"></i> LogOut </a></li>
 				<?php } ?>
                 </ul>

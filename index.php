@@ -113,13 +113,13 @@ include "lib/config_web.php"
 							<div class="h_nav">
 								<h4>popular</h4>
 									<?php
-						  $query = mysqli_query($koneksi, "SELECT * FROM tbl_kategori");
+						  $query = mysqli_query($koneksi, "SELECT * FROM kategori");
 						  while ($data = mysqli_fetch_array($query))
 						  {
 						  ?>
 
-						  <option value="<?php echo $data['id_kategori'];?>"><?php echo $data['nama_kategori'];?></option>
-						  <!-- <li><a href="shop.php?>k=<?php echo $data['nama_kategori']?>"><?php echo $data['nama_kategori']?></a></li> -->
+						  <option value="<?php echo $data['id_kategori'];?>"><?php echo $data['nama'];?></option>
+						  <!-- <li><a href="shop.php?>k=<?php echo $data['nama']?>"><?php echo $data['nama']?></a></li> -->
 						  <?php } ?>
 									<!-- <li><a href="shop.html">new arrivals</a></li>
 									<li><a href="shop.html">men</a></li>

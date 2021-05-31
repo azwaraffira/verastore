@@ -23,7 +23,7 @@ if (isset($_GET['perPage']) && !empty($_GET['perPage']))
 	$dataPerPage = (int)$_GET['perPage'];
 
 // tabel yang akan diambil datanya
-$table = 'tbl_kategori';
+$table = 'kategori';
 
 // ambil data
 $dataTable = getTableData($koneksi, $table, $page, $dataPerPage);
@@ -82,8 +82,8 @@ include "../templates/header.php";
 								?>
 								<tr>
 								<th scope="row"><?php echo $no; ?></th>
-								<td><?php echo $data['nama_kategori'];?></td>
-								<td><a href="<?php echo $admin_url; ?>kategori/form_edit.php?id_kategori=<?php echo $data['id_kategori'];?>">
+								<td><?php echo $data['nama'];?></td>
+								<td><a href="<?php echo $admin_url; ?>kategori/form_edit.php?id_kategori=<?php echo $data['id_kategori'];?> ">
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>
 								</button></a>

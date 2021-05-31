@@ -7,7 +7,7 @@ $username = $_POST['username'];
 $password = $_POST['password'];
 
 
-$query = mysqli_query($koneksi, "SELECT * FROM admin WHERE username='$username' AND password='$password'");
+$query = mysqli_query($koneksi, "SELECT * FROM user WHERE username='$username' AND passwd='$password'");
 $data = mysqli_fetch_array($query);
 $jml_data = mysqli_num_rows($query);
 
