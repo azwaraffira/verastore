@@ -6,9 +6,11 @@
 	// untuk menangkap variabel 'nama_kategori' dan 'id_kategori' yang dikirim oleh form_edit.php
 	$id_kategori = $_POST['id_kategori'];
 	$nama_kategori = $_POST['nama_kategori'];
+	$deskripsi = $_POST['deskripsi'];
+	$berat = $_POST['berat'];
 	// query untuk mengubah ke tabel tbl_kategori
 	
-	$querySimpan = mysqli_query($koneksi, "UPDATE kategori SET nama_kategori='$nama_kategori' WHERE id_kategori='$id_kategori'");
+	$querySimpan = mysqli_query($koneksi, "UPDATE kategori SET nama='$nama_kategori' , deskripsi='$deskripsi' , berat='$berat' WHERE id_kategori='$id_kategori'");
 
 	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar kategori
 	if ($querySimpan) {

@@ -5,9 +5,11 @@
 
 	// untuk menangkap variabel 'nama_kategori' yang dikirim oleh form_tambah.php
 	$nama_kategori = $_POST['nama_kategori'];
+	$deskripsi = $_POST['deskripsi'];
+	$berat = $_POST['berat'];
 	// query untuk menyimpan ke tabel tbl_kategori
 	
-	$querySimpan = mysqli_query($koneksi, "INSERT INTO kategori (nama) VALUES ('$nama_kategori')");
+	$querySimpan = mysqli_query($koneksi, "INSERT INTO kategori (nama, deskripsi, berat) VALUES ('$nama_kategori' , '$deskripsi' , '$berat')");
 
 	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar kategori
 	if ($querySimpan) {

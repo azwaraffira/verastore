@@ -94,12 +94,12 @@ include "../templates/header.php";
 								<td><?php echo $data['kota'];?></td>
 								<td><?php echo $data['provinsi'];?></td>
 								<td><?php echo $data['kode_pos'];?></td>
-								<td><a href="<?php echo $admin_url; ?>user/form_edit.php?id_user=<?php echo $data['id_user'];?>">
+								<td><a href="<?php echo $admin_url; ?>user/form_edit.php?id_user=<?php echo $no ;?>">
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>
 								</button></a>
 								
-								<a href="<?php echo $admin_url; ?>user/hapus.php?id_user=<?php echo $data['id_user'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
+								<a href="<?php echo $admin_url; ?>user/hapus.php?id_user=<?php echo $no ;?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
 								
 								<button class="btn btn-danger">
 									<i class="fa fa-remove"></i>

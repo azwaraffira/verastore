@@ -70,6 +70,8 @@ include "../templates/header.php";
 								<tr>
 									<th>No</th>
 									<th>Nama Kategori</th>
+									<th>Deskripsi</th>
+									<th>Berat</th>
 									<th style="width: 150px;">Aksi</th>
 
 								</tr>
@@ -83,6 +85,8 @@ include "../templates/header.php";
 								<tr>
 								<th scope="row"><?php echo $no; ?></th>
 								<td><?php echo $data['nama'];?></td>
+								<td><?php echo $data['deskripsi'];?></td>
+								<td><?php echo $data['berat'];?> gram </td>
 								<td><a href="<?php echo $admin_url; ?>kategori/form_edit.php?id_kategori=<?php echo $data['id_kategori'];?> ">
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>

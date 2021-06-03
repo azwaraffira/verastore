@@ -89,17 +89,17 @@ include "../templates/header.php";
 								<th scope="row"><?php echo $no; ?></th>
 								<td><?php echo $data['nama_produk'];?></td>
 								<!--test gambar-->
-								<td><img src="../../file/produk/<?php echo $data['gambar']; ?>" width='130px' height='100px'/></td>
+								<td><img src="../../file/produk/IMG_0900.JPG" width='130px' height='100px'/></td>
 								<td>Rp. <?php echo $data['harga'];?></td>
 								<td><?php echo $data['deskripsi'];?></td>
 								<td><?php echo $data['size'];?></td>
 								<td><?php echo $data['stok'];?></td>
-								<td><a href="<?php echo $admin_url; ?>produk/form_edit.php?id_produk=<?php echo $data['id_produk'];?>">
+								<td><a href="<?php echo $admin_url; ?>produk/form_edit.php?id_produk=<?php echo $no; ?>" >
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>
 								</button></a>
 								
-								<a href="<?php echo $admin_url; ?>produk/hapus.php?id_produk=<?php echo $data['id_produk'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
+								<a href="<?php echo $admin_url; ?>produk/hapus.php?id_produk=<?php echo $no; ?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
 								
 								<button class="btn btn-danger">
 									<i class="fa fa-remove"></i>
@@ -108,6 +108,7 @@ include "../templates/header.php";
 								</tr>
 
 								<?php } ?>
+								
 							</tbody>
 						</table>
 

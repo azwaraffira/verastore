@@ -8,7 +8,7 @@ include "../../lib/config_web.php";
 include "../../lib/koneksi.php";
 
 $id_produk = $_GET['id_produk'];
-$query = mysqli_query($koneksi, "SELECT * FROM tbl_produk WHERE id_produk='$id_produk'");
+$query = mysqli_query($koneksi, "SELECT * FROM produk WHERE id_produk='$id_produk'");
 
 $dataProduk = mysqli_fetch_array($query); 
 
