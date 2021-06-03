@@ -35,28 +35,7 @@ include "../templates/header.php"; ?>
                         <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nama User <span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                          <input type="text" id="first-name" name="nama_user" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Telepon <span class="required">*</span>
-                        </label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                          <input type="text" id="first-name" name="telepon" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Alamat <span class="required">*</span>
-                        </label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                          <input type="text" id="first-name" name="alamat" required="required" class="form-control col-md-7 col-xs-12">
-                        </div>
-                      </div>
-                      <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Email <span class="required">*</span>
-                        </label>
-                        <div class="col-md-10 col-sm-10 col-xs-12">
-                          <input type="text" id="first-name" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="first-name" name="nama" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">
@@ -67,13 +46,20 @@ include "../templates/header.php"; ?>
                         </div>
                       </div>
                       <div class="form-group">
-                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Password <span class="required">*</span>
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Password<span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                          <input type="text" id="first-name" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="password" id="first-name" name="passwd" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
-             
+                      <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Level<span class="required">*</span>
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                          <input type="text" id="first-name" name="level" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                      
                
            
                       <div class="ln_solid"></div>

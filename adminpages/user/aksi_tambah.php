@@ -4,16 +4,17 @@
 	include "../../lib/koneksi.php";
 
 	// untuk menangkap variabel 'nama_user' yang dikirim oleh form_tambah.php
-	$nama = $_POST['nama_user'];
-	$telepon = $_POST['telepon'];
-	$alamat = $_POST['alamat'];
-	$email = $_POST['email'];
+	$nama= $_POST['nama'];
 	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$password = $_POST['passwd'];
+	$level = $_POST['level'];
+	
+	
 	// query untuk menyimpan ke tabel tbl_user
 	
-	$querySimpan = mysqli_query($koneksi, "INSERT INTO user (nama_user, telepon, alamat, email, username, password) 
-		VALUES ('$nama', '$telepon', '$alamat', '$email', '$username', '$password')");
+	$querySimpan = mysqli_query($koneksi, "INSERT INTO user ( nama, username, passwd, level ) 
+		VALUES ('$nama', '$username', '$password', '$level' )");
+		
 
 	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar user
 	if ($querySimpan) {

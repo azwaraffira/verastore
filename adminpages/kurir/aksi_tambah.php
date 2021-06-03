@@ -7,7 +7,7 @@
 	$nama_kurir = $_POST['nama_kurir'];
 	// query untuk menyimpan ke tabel tbl_kurir
 	
-	$querySimpan = mysqli_query($koneksi, "INSERT INTO kurir (nama_kurir) VALUES ('$nama_kurir')");
+	$querySimpan = mysqli_query($koneksi, "INSERT INTO kurir (nama) VALUES ('$nama_kurir')");
 
 	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar kurir
 	if ($querySimpan) {

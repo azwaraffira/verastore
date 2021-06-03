@@ -96,7 +96,7 @@ include "../templates/header.php";
 								<td>Rp. <?php echo $data['harga_total'];?></td>
 								<td><?php echo $data['status_pembayaran'];?></td>
 
-								<td><a href="<?php echo $admin_url; ?>transaksi/item.php?id_transaksi=<?php echo $no;?>">
+								<td><a href="<?php echo $admin_url; ?>transaksi/item.php?id_transaksi=<?php echo $data['id_transaksi'];?>">
 								<button class="btn btn-warning">
 									Detail
 								</button></a>

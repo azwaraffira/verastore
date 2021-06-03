@@ -23,7 +23,7 @@ if (isset($_GET['perPage']) && !empty($_GET['perPage']))
 	$dataPerPage = (int)$_GET['perPage'];
 
 // tabel yang akan diambil datanya
-$table = 'transaksi';
+$table = 'customer';
 
 // ambil data
 $dataTable = getTableData($koneksi, $table, $page, $dataPerPage);
@@ -36,7 +36,7 @@ include "../templates/header.php";
 	<div class="">
 		<div class="page-title">
 			<div class="title_left">
-				<h3>Manajemen <small>Data Transaksi</small></h3>
+				<h3>Manajemen <small>Data User</small></h3>
 			</div>
 
 			<div class="title_right">
@@ -59,7 +59,7 @@ include "../templates/header.php";
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2><small>Data Transaksi</small></h2>
+						<h2><small>Data User</small></h2>
 
 						<div class="clearfix"></div>
 					</div>
@@ -69,11 +69,14 @@ include "../templates/header.php";
 							<thead>
 								<tr>
 									<th style="width: 50px;">No</th>
-									<th style="width: 50px;">Waktu</th>
-									<th style="width: 110px;">Status</th>
-									<th style="width: 110px;">Total</th>
+									<th style="width: 190px;">Nama</th>
+									<th style="width: 150px;">Telepon</th>
+									<th style="width: 110px;">E-mail</th>
+									<th style="width: 110px;">alamat</th>
+									<th style="width: 110px;">kota</th>
+									<th style="width: 110px;">provinsi</th>
+									<th style="width: 110px;">kode pos</th>
 									<th style="width: 110px;">Aksi</th>
-
 								</tr>
 							</thead>
 							<tbody>
@@ -84,15 +87,19 @@ include "../templates/header.php";
 								?>
 								<tr>
 								<th scope="row"><?php echo $no; ?></th>
-								<td><?php echo $data['waktu'];?></td>
-								<td><?php echo $data['status'];?></td>
-								<td>Rp. <?php echo $data['total'];?></td>
-								<td><a href="<?php echo $admin_url; ?>transaksi/form_edit.php?id_transaksi=<?php echo $data['id_transaksi'];?>">
+								<td><?php echo $data['nama_lengkap'];?></td>
+								<td><?php echo $data['telp'];?></td>
+								<td><?php echo $data['email'];?></td>
+								<td><?php echo $data['alamat'];?></td>
+								<td><?php echo $data['kota'];?></td>
+								<td><?php echo $data['provinsi'];?></td>
+								<td><?php echo $data['kode_pos'];?></td>
+								<td><a href="<?php echo $admin_url; ?>customer/form_edit.php?id_customer=<?php echo $no ;?>">
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>
 								</button></a>
 								
-								<a href="<?php echo $admin_url; ?>transaksi/hapus.php?id_transaksi=<?php echo $data['id_transaksi'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
+								<a href="<?php echo $admin_url; ?>customer/hapus.php?id_customer=<?php echo $no ;?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
 								
 								<button class="btn btn-danger">
 									<i class="fa fa-remove"></i>
@@ -108,7 +115,7 @@ include "../templates/header.php";
 				</div>
 			</div>
 			<div class="col-xs-12">
-				<a href="<?php echo $admin_url; ?>transaksi/form_tambah.php">
+				<a href="<?php echo $admin_url; ?>customer/form_tambah.php">
 				<button class="btn btn-primary">
 					<i class="fa fa-plus"></i> Tambah
 				</button></a>

@@ -75,7 +75,8 @@
 				<li><a href="<?php echo $admin_url; ?>kategori/main.php" ?><i class="fa fa-th"></i> Kategori </a></li>
 				    <li><a href="<?php echo $admin_url; ?>produk/main.php"><i class="fa fa-camera"></i> Produk </a></li>
 					  <li><a href="<?php echo $admin_url; ?>transaksi/main.php"><i class="fa fa-cc"></i> Transaksi </a></li>
-				    <li><a href="<?php echo $admin_url; ?>user/main.php"><i class="fa fa-user"></i> Customer </a></li>
+            <li><a href="<?php echo $admin_url; ?>user/main.php"><i class="fa fa-user"></i> User </a></li>
+				    <li><a href="<?php echo $admin_url; ?>customer/main.php"><i class="fa fa-user"></i> Customer </a></li>
            
             <li><a href="<?php echo $admin_url; ?>kurir/main.php"><i class="fa fa-cc"></i> Kurir </a></li>
            

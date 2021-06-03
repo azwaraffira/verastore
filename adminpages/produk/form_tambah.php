@@ -36,13 +36,13 @@ include "../templates/header.php"; ?>
                         </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
                        
-						  <select class="form-control col-md-7 col-xs-12" name="nama_kategori">
+						  <select class="form-control col-md-7 col-xs-12" name="nama">
 						  <?php
-						  $query = mysqli_query($koneksi, "SELECT * FROM tbl_kategori");
+						  $query = mysqli_query($koneksi, "SELECT * FROM kategori");
 						  while ($data = mysqli_fetch_array($query))
 						  {
 						  ?>
-						  <option value="<?php echo $data['id_kategori'];?>"><?php echo $data['nama_kategori'];?></option>
+						  <option value="<?php echo $data['id_kategori'];?>"><?php echo $data['nama'];?></option>
 						  <?php } ?>
 						  </select>
                         </div>
@@ -51,7 +51,7 @@ include "../templates/header.php"; ?>
                         <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nama Produk <span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                          <input type="text" id="first-name" name="nama_produk" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="first-name" name="nama" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					                   <div class="form-group">
@@ -66,6 +66,22 @@ include "../templates/header.php"; ?>
                         </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
                           <input type="text" id="first-name" name="harga" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                      </div>
+                            <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Stok <span class="required"></span>
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                       
+						  <select class="form-control col-md-7 col-xs-12" name="stok">
+						  <?php
+						  $query = mysqli_query($koneksi, "SELECT * FROM stok");
+						  while ($data = mysqli_fetch_array($query))
+						  {
+						  ?>
+						  <option value="<?php echo $data['id_stok'];?>"><?php echo $data['stok'];?></option>
+						  <?php } ?>
+						  </select>
                         </div>
                       </div>
 					                   <div class="form-group">

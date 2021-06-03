@@ -6,12 +6,34 @@ if (empty($_SESSION['username']) AND empty($_SESSION['level'])) {
 } else { 
 include "../../lib/config_web.php";
 include "../../lib/koneksi.php";
+include "../../lib/pagination.php";
+//
+// untuk mengetahui halaman keberapa yang sedang dibuka
+// juga untuk men-set nilai default ke halaman 1 jika tidak ada
+// data $_GET['page'] yang dikirimkan
+$page = 1;
+if (isset($_GET['page']) && !empty($_GET['page']))
+	$page = (int)$_GET['page'];
 
-$id_customer = $_GET['id_customer'];
-$query = mysqli_query($koneksi, "SELECT * FROM customer WHERE id_customer='$id_customer'");
+// untuk mengetahui berapa banyak data yang akan ditampilkan
+// juga untuk men-set nilai default menjadi 5 jika tidak ada
+// data $_GET['perPage'] yang dikirimkan
+$dataPerPage = 5;
+if (isset($_GET['perPage']) && !empty($_GET['perPage']))
+	$dataPerPage = (int)$_GET['perPage'];
 
-$data = mysqli_fetch_array($query); 
+$id = $_GET['id_user'];
 
+$table = 'user';
+$idName = 'id_user';
+
+
+$dataUser = getById($koneksi, $table, $id , $idName, $page, $dataPerPage);
+
+	foreach ($dataUser as $i => $data)
+	{
+	$no = ($i + 1) + (($page - 1) * $dataPerPage);
+    
 include "../templates/header.php"; ?>
       <!-- page content -->
         <div class="right_col" role="main">
@@ -33,63 +55,36 @@ include "../templates/header.php"; ?>
                   <div class="x_content">
                     <br />
 	  <form method="post" id="demo-form2" data-parsley-validate class="form-horizontal form-label-left" action="aksi_edit.php">
-		<input type="hidden" name="id_customer" value="<?php echo $data['id_customer'];?>">
+		<input type="hidden" name="id_user" value="<?php echo $data['id_user'];?>">
 	  <div class="form-group">
-		<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nama Customer <span class="required">*</span>
+		<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nama User <span class="required">*</span>
 		</label>
 		<div class="col-md-10 col-sm-10 col-xs-12">
-		  <input type="text" id="first-name" name="nama" value="<?php echo $data['nama_lengkap'];?>" required="required" class="form-control col-md-7 col-xs-12">
+		  <input type="text" id="first-name" name="nama" value="<?php echo $data['nama'];?>" required="required" class="form-control col-md-7 col-xs-12">
 		</div>
 	  </div>
     <div class="form-group">
-    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Telepon <span class="required">*</span>
+    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Username <span class="required">*</span>
     </label>
     <div class="col-md-10 col-sm-10 col-xs-12">
-      <input type="text" id="first-name" name="telepon" value="<?php echo $data['telp'];?>" required="required" class="form-control col-md-7 col-xs-12">
-    </div>
-    </div>
-    <div class="form-group">
-    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Alamat <span class="required">*</span>
-    </label>
-    <div class="col-md-10 col-sm-10 col-xs-12">
-      <input type="text" id="first-name" name="alamat" value="<?php echo $data['alamat'];?>" required="required" class="form-control col-md-7 col-xs-12">
-    </div>
-    </div>
-    <div class="form-group">
-    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kota <span class="required">*</span>
-    </label>
-    <div class="col-md-10 col-sm-10 col-xs-12">
-      <input type="text" id="first-name" name="kota" value="<?php echo $data['kota'];?>" required="required" class="form-control col-md-7 col-xs-12">
-    </div>
-    </div>
-    <div class="form-group">
-    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Provinsi <span class="required">*</span>
-    </label>
-    <div class="col-md-10 col-sm-10 col-xs-12">
-      <input type="text" id="first-name" name="provinsi" value="<?php echo $data['provinsi'];?>" required="required" class="form-control col-md-7 col-xs-12">
-    </div>
-    </div>
-    <div class="form-group">
-    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kode Pos<span class="required">*</span>
-    </label>
-    <div class="col-md-10 col-sm-10 col-xs-12">
-      <input type="text" id="first-name" name="kode_pos" value="<?php echo $data['kode_pos'];?>" required="required" class="form-control col-md-7 col-xs-12">
-    </div>
-    </div>
-    <div class="form-group">
-    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Email <span class="required">*</span>
-    </label>
-    <div class="col-md-10 col-sm-10 col-xs-12">
-      <input type="text" id="first-name" name="email" value="<?php echo $data['email'];?>" required="required" class="form-control col-md-7 col-xs-12">
+      <input type="text" id="first-name" name="username" value="<?php echo $data['username'];?>" required="required" class="form-control col-md-7 col-xs-12">
     </div>
     </div>
     <div class="form-group">
     <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Password <span class="required">*</span>
     </label>
     <div class="col-md-10 col-sm-10 col-xs-12">
-      <input type="text" id="first-name" name="passwd" value="<?php echo $data['passwd'];?>" required="required" class="form-control col-md-7 col-xs-12">
+      <input type="password" id="first-name" name="passwd" value="<?php echo $data['passwd'];?>" required="required" class="form-control col-md-7 col-xs-12">
     </div>
     </div>
+    <div class="form-group">
+    <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Level <span class="required">*</span>
+    </label>
+    <div class="col-md-10 col-sm-10 col-xs-12">
+      <input type="text" id="first-name" name="level" value="<?php echo $data['level'];?>" required="required" class="form-control col-md-7 col-xs-12">
+    </div>
+    </div>
+    
     
 	  <div class="ln_solid"></div>
 	  <div class="form-group">
@@ -107,5 +102,5 @@ include "../templates/header.php"; ?>
           </div>
         </div>
 		<?php include "../templates/footer.php"; 
-		}
+		}}
 		?>

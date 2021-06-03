@@ -6,14 +6,12 @@
 	// untuk menangkap variabel 'nama_user' dan 'id_user' yang dikirim oleh form_edit.php
 	$id_user = $_POST['id_user'];
 	$nama = $_POST['nama'];
-	$telepon = $_POST['telepon'];
-	$alamat = $_POST['alamat'];
-	$email = $_POST['email'];
 	$username = $_POST['username'];
-	$password = $_POST['password'];
+	$password = $_POST['passwd'];
+	$level = $_POST['level'];
 	// query untuk mengubah ke tabel tbl_user
 	
-	$querySimpan = mysqli_query($koneksi, "UPDATE user SET nama_user ='$nama', telepon = '$telepon', alamat = '$alamat', email = '$email', username = '$username', password = '$password' WHERE id_user='$id_user'");
+	$querySimpan = mysqli_query($koneksi, "UPDATE user SET nama ='$nama', username = '$username', passwd = '$password' , level = '$level' WHERE id_user='$id_user'");
 
 	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar user
 	if ($querySimpan) {

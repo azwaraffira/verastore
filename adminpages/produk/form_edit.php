@@ -28,7 +28,7 @@ include "../templates/header.php"; ?>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Tambah <small>data produk</small></h2>
+                    <h2>Form Edit <small>data produk</small></h2>
   
                     <div class="clearfix"></div>
                   </div>
@@ -42,13 +42,13 @@ include "../templates/header.php"; ?>
                         </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
                        
-						  <select class="form-control col-md-7 col-xs-12" name="nama_kategori">
+						  <select class="form-control col-md-7 col-xs-12" name="nama">
 						  <?php
-						  $query = mysqli_query($koneksi, "SELECT * FROM tbl_kategori");
+						  $query = mysqli_query($koneksi, "SELECT * FROM kategori");
 						  while ($data = mysqli_fetch_array($query))
 						  {
 						  ?>
-						  <option value="<?php echo $data['id_kategori'];?>"><?php echo $data['nama_kategori'];?></option>
+						  <option value="<?php echo $data['id_kategori'];?>"><?php echo $data['nama'];?></option>
 						  <?php } ?>
 						  </select>
                         </div>
@@ -57,7 +57,7 @@ include "../templates/header.php"; ?>
                         <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nama Produk <span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                          <input type="text" id="first-name" name="nama_produk" value="<?php echo $dataProduk['nama_produk']; ?>" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="first-name" name="nama" value="<?php echo $dataProduk['nama']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
 					  	                   <div class="form-group">
@@ -71,6 +71,7 @@ include "../templates/header.php"; ?>
                         <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Gambar <span class="required"></span>
                         </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
+                        
                           <input type="file" id="first-name" name="gambar">
                         </div>
                       </div>
@@ -81,6 +82,22 @@ include "../templates/header.php"; ?>
                           <input type="text" id="first-name" name="harga" value="<?php echo $dataProduk['harga']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
+                              <div class="form-group">
+                        <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Stok <span class="required"></span>
+                        </label>
+                        <div class="col-md-10 col-sm-10 col-xs-12">
+                       
+						  <select class="form-control col-md-7 col-xs-12" name="stok">
+						  <?php
+						  $query = mysqli_query($koneksi, "SELECT * FROM stok");
+						  while ($data = mysqli_fetch_array($query))
+						  {
+						  ?>
+						  <option value="<?php echo $data['id_stok'];?>"><?php echo $data['stok'];?></option>
+						  <?php } ?>
+						  </select>
+                        </div>
+                      </div>
 					                   <div class="form-group">
                         <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Deskripsi <span class="required">*</span>
                         </label>
@@ -88,7 +105,7 @@ include "../templates/header.php"; ?>
                           <input type="text" id="first-name" name="deskripsi" value="<?php echo $dataProduk['deskripsi']; ?>" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
-
+                
                       <div class="ln_solid"></div>
                       <div class="form-group">
                         <div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-2">
