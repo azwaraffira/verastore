@@ -57,7 +57,6 @@ INSERT INTO `customer` (`id_customer`, `nama_lengkap`, `email`, `telp`, `alamat`
 CREATE TABLE `kategori` (
   `id_kategori` int(6) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
-  `deskripsi` varchar(200) DEFAULT NULL,
   `berat` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -65,10 +64,10 @@ CREATE TABLE `kategori` (
 -- Dumping data untuk tabel `kategori`
 --
 
-INSERT INTO `kategori` (`id_kategori`, `nama`, `deskripsi`, `berat`) VALUES
-(1, 'Gamis', 'lorem ipsum', 900),
-(2, 'Jilbab', 'lorem ipsum', 300),
-(3, 'Mukena', 'lorem ipsum', 700);
+INSERT INTO `kategori` (`id_kategori`, `nama`, `berat`) VALUES
+(1, 'Gamis', 900),
+(2, 'Jilbab', 300),
+(3, 'Mukena', 700);
 
 -- --------------------------------------------------------
 
@@ -94,24 +93,29 @@ INSERT INTO `kurir` (`id_kurir`, `nama`) VALUES
 -- Struktur dari tabel `produk`
 --
 
+
+
 CREATE TABLE `produk` (
   `id_produk` int(6) NOT NULL,
   `nama` varchar(100) DEFAULT NULL,
   `harga` int(11) DEFAULT NULL,
-  `id_kategori` int(6) DEFAULT NULL
+  `deskripsi` varchar(200),
+  `id_kategori` int(6) DEFAULT NULL,
+  `nama_gambar` varchar(100)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 --
 -- Dumping data untuk tabel `produk`
 --
 
-INSERT INTO `produk` (`id_produk`, `nama`, `harga`, `id_kategori`) VALUES
-(1, 'Kaftan', 75000, 1),
-(2, 'Katun', 50000, 1),
-(3, 'Katun', 20000, 2),
-(4, 'Sutra', 25000, 2),
-(5, 'Anak-anak', 30000, 3),
-(6, 'Dewasa', 40000, 3);
+INSERT INTO `produk` (`id_produk`, `nama`, `harga` ,`deskripsi`,`id_kategori`, `nama_gambar`) VALUES
+(1, 'Kaftan', 75000, 'lorem ipsum', 1, '1_GAMIS_KAFTAN.jpg'),
+(2, 'Katun', 50000, 'lorem ipsum', 1, '1_GAMIS_KATUN.jpg'),
+(3, 'Katun', 20000, 'lorem ipsum' , 2, '2_JILBAB_KATUN.jpg'),
+(4, 'Sutra', 25000,'lorem ipsum', 2, '2_JILBAB_SUTRA.jpg'),
+(5, 'Anak-anak', 30000,'lorem ipsum', 3, '3_MUKENA_ANAK.jpg'),
+(6, 'Dewasa', 40000,'lorem ipsum', 3, '3_MUKENA_DEWASA.jpg');
 
 -- --------------------------------------------------------
 
@@ -287,16 +291,25 @@ CREATE TABLE `vw_viewtransaksi` (
 --
 -- Struktur untuk view `vw_viewproduk`
 --
-DROP TABLE IF EXISTS `vw_viewproduk`;
+DROP TABLE IF EXISTS `vw_produk`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_produk`  AS SELECT `s`.`id_stok` AS `id_stok`, concat(`k`.`nama`,' ',`p`.`nama`) AS `nama_produk`, `k`.`deskripsi` AS `deskripsi`, `s`.`size` AS `size`, `p`.`harga` AS `harga`, `s`.`stok` AS `stok` FROM ((`produk` `p` join `stok` `s` on(`s`.`id_produk` = `p`.`id_produk`)) join `kategori` `k` on(`k`.`id_kategori` = `p`.`id_kategori`)) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost`
+ SQL SECURITY DEFINER VIEW `vw_produk` 
+ AS 
+ SELECT `s`.`id_stok` AS `id_stok`, concat(`k`.`nama`,' ',`p`.`nama`) AS `nama_produk`
+ , `P`.`deskripsi` AS `deskripsi`, `s`.`size` AS `size`, `p`.`harga` AS `harga`, `p`.`nama_gambar`
+ , `s`.`stok` AS `stok`
+ FROM 
+ ((`produk` `p` join `stok` `s` on(`s`.`id_produk` = `p`.`id_produk`)) 
+ join `kategori` `k` on(`k`.`id_kategori` = `p`.`id_kategori`)) ;
+ 
 
 -- --------------------------------------------------------
 
 --
 -- Struktur untuk view `vw_viewtransaksi`
 --
-DROP TABLE IF EXISTS `vw_viewtransaksi`;
+DROP TABLE IF EXISTS `vw_transaksi`;
 
 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `vw_transaksi`  AS SELECT `t`.`id_transaksi` AS `id_transaksi`, `c`.`nama_lengkap` AS `nama_lengkap`, `t`.`tgl_transaksi` AS `tgl_transaksi`, `s`.`nama` AS `status_pembayaran`, `t`.`harga_awal` AS `harga_awal`, `t`.`harga_ongkir` AS `harga_ongkir`, `t`.`total_berat` AS `total_berat`, `t`.`harga_total` AS `harga_total`, `ku`.`nama` AS `nama_kurir` FROM ((((((`transaksi` `t` join `transaksi_item` `ti` on(`t`.`id_transaksi` = `ti`.`id_transaksi`)) join `produk` `p` on(`ti`.`id_produk` = `p`.`id_produk`)) join `kategori` `k` on(`k`.`id_kategori` = `p`.`id_kategori`)) join `kurir` `ku` on(`ku`.`id_kurir` = `t`.`id_kurir`)) join `customer` `c` on(`c`.`id_customer` = `t`.`id_customer`)) join `rf_status` `s` on(`t`.`status_bayar` = `s`.`id_status`)) ;
 

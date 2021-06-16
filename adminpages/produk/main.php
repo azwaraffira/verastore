@@ -89,7 +89,7 @@ include "../templates/header.php";
 								<th scope="row"><?php echo $no; ?></th>
 								<td><?php echo $data['nama_produk'];?></td>
 								<!--test gambar-->
-								<td><img src="../../file/produk/IMG_0900.JPG" width='130px' height='100px'/></td>
+								<td><img src="../../file/produk/<?php echo $data['nama_gambar'];?>" width='130px' height='100px'/></td>
 								<td>Rp. <?php echo $data['harga'];?></td>
 								<td><?php echo $data['deskripsi'];?></td>
 								<td><?php echo $data['size'];?></td>

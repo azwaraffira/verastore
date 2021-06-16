@@ -162,18 +162,34 @@ values
 (1, 'Disimpan'),
 (2, 'Dibayar');
 
+create table rf_info(
+id_info int(6) NOT NULL  auto_increment,
+nama varchar(100),
+alamat varchar(100),
+primary key (id_info)
+);
+
+insert into rf_info
+values
+(1, 'VERA STORE', 'Jln.Wahid Hasyim No 12, Pringgolayan, Depok, Sleman');
+
 -- produk
-create view vw_viewproduk
+create view vw_produk
 as
 select s.id_stok, concat(k. nama,' ', p.nama) as nama_produk, k.deskripsi,  s.size, p.harga, s.stok  
 from produk p 
 join stok s  on s.id_produk = p.id_produk
 join kategori k on k.id_kategori = p.id_kategori;    
 
+
 -- transaksi
-create view vw_viewtransaksi
+-- drop view vw_transaksi
+create view vw_transaksi
 as
-select t.id_transaksi, c.nama_lengkap, t.tgl_transaksi , s.nama as status_pembayaran, t.harga_awal, t.harga_ongkir, t.total_berat, t.harga_total, ku.nama as nama_kurir
+select t.id_transaksi, c.nama_lengkap, c.email, c.telp, concat(c.alamat,' ',c.kota,' ',c.provinsi) as alamat, 
+ t.tgl_transaksi , s.nama as status_pembayaran, t.harga_awal, t.harga_ongkir,
+ t.total_berat, t.harga_total, ku.nama as nama_kurir, 
+ concat(k. nama,' ', p.nama) as nama_produk, p.harga as harga_per_produk, ti.size, ti.jumlah_produk, ti.berat_produk, ti.harga as harga_per_item
 from transaksi t join transaksi_item ti on t.id_transaksi = ti.id_transaksi
 join produk p on  ti.id_produk = p.id_produk
 join kategori k on k.id_kategori = p.id_kategori
