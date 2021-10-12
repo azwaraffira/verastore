@@ -26,7 +26,7 @@ include "../templates/header.php"; ?>
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Form Tambah <small>data kategori</small></h2>
+                    <h2>Form Edit <small>data kategori</small></h2>
   
                     <div class="clearfix"></div>
                   </div>
@@ -53,7 +53,7 @@ include "../templates/header.php"; ?>
 	  <div class="ln_solid"></div>
 	  <div class="form-group">
 		<div class="col-md-3 col-sm-3 col-xs-12 col-md-offset-2">
-		  <button type="submit" class="btn btn-primary">Batal</button>
+      <button  class="btn btn-primary" onclick="goBack()">Batal</button>
 		  <button type="submit" class="btn btn-success"><i class="fa fa-save"></i>Simpan</button>
 		</div>
 	  </div>
@@ -65,6 +65,7 @@ include "../templates/header.php"; ?>
             </div>
           </div>
         </div>
+</script>
 		<?php include "../templates/footer.php"; 
 		}
 		?>

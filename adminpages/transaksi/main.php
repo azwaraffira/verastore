@@ -24,9 +24,11 @@ if (isset($_GET['perPage']) && !empty($_GET['perPage']))
 
 // tabel yang akan diambil datanya
 $table = 'vw_transaksi';
+$idName = 'id_transaksi';
+$table2 = 'rf_status';
 
 // ambil data
-$dataTable = getViewData($koneksi, $table, $page, $dataPerPage);
+$dataTable = getViewData($koneksi, $table, $idName, $page, $dataPerPage);
 
 include "../templates/header.php";
 ?>
@@ -94,7 +96,11 @@ include "../templates/header.php";
 								<td><?php echo $data['total_berat'];?> gram</td>
 								<td><?php echo $data['nama_kurir'];?></td>
 								<td>Rp. <?php echo $data['harga_total'];?></td>
-								<td><?php echo $data['status_pembayaran'];?></td>
+								
+								<td> 
+									<?php $style = findByValue($koneksi, $table2, "nama", $data['status_pembayaran']);  ?> 
+									<span class="label <?php echo $style['style'];?>"><?php echo $data['status_pembayaran'];?> </span>
+								</td>
 
 								<td><a href="<?php echo $admin_url; ?>transaksi/item.php?id_transaksi=<?php echo $data['id_transaksi'];?>">
 								<button class="btn btn-warning">
@@ -103,9 +109,9 @@ include "../templates/header.php";
 								
 								<a href="<?php echo $admin_url; ?>transaksi/hapus.php?id_transaksi=<?php echo $data['id_transaksi'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
 								
-								<button class="btn btn-danger">
+								<!-- <button class="btn btn-danger">
 									<i class="fa fa-remove"></i>
-								</button></a></td>
+								</button></a></td> -->
 
 								</tr>
 
@@ -116,7 +122,7 @@ include "../templates/header.php";
 					</div>
 				</div>
 			</div>
-			<div class="col-xs-12">
+			<!-- <div class="col-xs-12">
 				<a href="<?php echo $admin_url; ?>transaksi/form_tambah.php">
 				<button class="btn btn-primary">
 					<i class="fa fa-plus"></i> Tambah
@@ -126,7 +132,7 @@ include "../templates/header.php";
 	<?php showPagination($koneksi, $table, $dataPerPage); ?>
 </ul>
 			
-			</div>
+			</div> -->
 			<div class="clearfix"></div>
 
 		</div>

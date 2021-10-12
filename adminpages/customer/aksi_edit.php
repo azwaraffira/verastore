@@ -10,9 +10,14 @@
 	$alamat = $_POST['alamat'];
 	$email = $_POST['email'];
 	$kota = $_POST['kota'];
+	$provinsi = $_POST['provinsi'];
+	$kode_pos = $_POST['kode_pos'];
+	$password = $_POST['passwd'];
 	// query untuk mengubah ke tabel tbl_user
 	
-	$querySimpan = mysqli_query($koneksi, "UPDATE customer SET nama_lengkap ='$nama', telp = '$telepon', alamat = '$alamat', email = '$email', kota = '$kota' WHERE id_customer='$id_customer'");
+	$querySimpan = mysqli_query($koneksi, 
+	"UPDATE customer SET nama_lengkap ='$nama', email = '$email', telp = '$telepon', alamat = '$alamat', kota = '$kota', provinsi = '$provinsi', kode_pos='$kode_pos'
+	 WHERE id_customer='$id_customer'");
 
 	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar user
 	if ($querySimpan) {

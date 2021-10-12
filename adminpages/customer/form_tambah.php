@@ -77,7 +77,7 @@ include "../templates/header.php"; ?>
                         <label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Kode Pos <span class="required">*</span>
                         </label>
                         <div class="col-md-10 col-sm-10 col-xs-12">
-                          <input type="text" id="first-name" name="kode_pos" required="required" class="form-control col-md-7 col-xs-12">
+                          <input type="text" id="first-name" name="kodepos" required="required" class="form-control col-md-7 col-xs-12">
                         </div>
                       </div>
                       <div class="form-group">

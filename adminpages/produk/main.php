@@ -24,9 +24,10 @@ if (isset($_GET['perPage']) && !empty($_GET['perPage']))
 
 // tabel yang akan diambil datanya
 $table = 'vw_produk';
+$id_stok = 'id_stok';
 
 // ambil data
-$dataTable = getViewData($koneksi, $table, $page, $dataPerPage);
+$dataTable = getViewData($koneksi, $table, $id_stok, $page, $dataPerPage);
 
 include "../templates/header.php";
 ?>
@@ -94,12 +95,12 @@ include "../templates/header.php";
 								<td><?php echo $data['deskripsi'];?></td>
 								<td><?php echo $data['size'];?></td>
 								<td><?php echo $data['stok'];?></td>
-								<td><a href="<?php echo $admin_url; ?>produk/form_edit.php?id_produk=<?php echo $no; ?>" >
+								<td><a href="<?php echo $admin_url; ?>produk/form_edit.php?id_stok=<?php echo $data['id_stok'];?>" >
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>
 								</button></a>
 								
-								<a href="<?php echo $admin_url; ?>produk/hapus.php?id_produk=<?php echo $no; ?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
+								<a href="<?php echo $admin_url; ?>produk/hapus.php?id_stok=<?php echo $data['id_stok'];?>" onClick="return confirm('Anda yakin ingin menghapus data ini?')">
 								
 								<button class="btn btn-danger">
 									<i class="fa fa-remove"></i>

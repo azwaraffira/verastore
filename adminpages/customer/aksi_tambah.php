@@ -10,7 +10,7 @@
 	$email = $_POST['email'];
 	$kota = $_POST['kota'];
 	$provinsi = $_POST['provinsi'];
-	$kodepos = $_POST['kode_pos'];
+	$kodepos = $_POST['kodepos'];
 	$password = $_POST['passwd'];
 	// query untuk menyimpan ke tabel tbl_customer
 	

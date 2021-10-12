@@ -94,7 +94,7 @@ include "../templates/header.php";
 								<td><?php echo $data['kota'];?></td>
 								<td><?php echo $data['provinsi'];?></td>
 								<td><?php echo $data['kode_pos'];?></td>
-								<td><a href="<?php echo $admin_url; ?>customer/form_edit.php?id_customer=<?php echo $no ;?>">
+								<td><a href="<?php echo $admin_url; ?>customer/form_edit.php?id_customer=<?php echo $data['id_customer'];?> ">
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>
 								</button></a>

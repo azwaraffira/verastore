@@ -10,10 +10,10 @@ function getTableData($koneksi, $tableName, $page = 1, $limit = 20) {
 	return $dataTable;
 }
 
-function getViewData($koneksi, $viewName, $page = 1, $limit = 20) {
+function getViewData($koneksi, $viewName, $idName, $page = 1, $limit = 20) {
 	$dataTable = array();
 	$startRow = ($page - 1) * $limit;
-	$query = mysqli_query($koneksi, "SELECT * FROM " . $viewName . " LIMIT " . $startRow . ", " . $limit);
+	$query = mysqli_query($koneksi, "SELECT * FROM " . $viewName . " group by " .$idName. " LIMIT " . $startRow . ", " . $limit);
 
 	while ($data = mysqli_fetch_assoc($query))
 		array_push($dataTable, $data);
@@ -29,6 +29,14 @@ function getById($koneksi, $viewName, $id, $idName, $page = 1, $limit = 20) {
 		array_push($dataTable, $data);
 
 	return $dataTable;
+}
+
+function findByValue($koneksi, $tableName , $column1 , $value ) {
+	$q = "SELECT * FROM ". $tableName . " WHERE " . $column1 ." = '". $value . "'";
+	$query = mysqli_query($koneksi, $q);
+	$data = mysqli_fetch_assoc($query);
+	
+	return $data;
 }
 
 function showPagination($koneksi, $tableName, $limit = 20) {

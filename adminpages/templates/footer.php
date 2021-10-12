@@ -50,7 +50,13 @@
     <!-- Custom Theme Scripts -->
     <script src="../../assets/admin/build/js/custom.min.js"></script>
 
-    <!-- Flot -->
+    
+  <script>
+  function goBack() {
+  window.history.back();
+  }
+<!-- Flot -->
+</script>
     <script>
       $(document).ready(function() {
         var data1 = [

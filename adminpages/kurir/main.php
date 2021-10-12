@@ -83,7 +83,7 @@ include "../templates/header.php";
 								<tr>
 								<th scope="row"><?php echo $no; ?></th>
 								<td><?php echo $data['nama'];?></td>
-								<td><a href="<?php echo $admin_url; ?>kurir/form_edit.php?id_kurir=<?php echo $data['id_kurir'] ;?>">
+								<td><a href="<?php echo $admin_url; ?>kurir/form_edit.php?id_kurir=<?php echo $data['id_kurir'];?> ">
 								<button class="btn btn-warning">
 									<i class="fa fa-edit"></i>
 								</button></a>

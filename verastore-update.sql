@@ -160,7 +160,11 @@ PRIMARY KEY (id_status)
 insert into rf_status
 values
 (1, 'Disimpan'),
-(2, 'Dibayar');
+(2, 'Dibayar'),
+(3,'Diproses'),
+(4,'Selesai'),
+(5,'Dibatalkan');
+
 
 create table rf_info(
 id_info int(6) NOT NULL  auto_increment,
@@ -197,7 +201,71 @@ join kurir ku on ku.id_kurir = t.id_kurir
 join customer c on c.id_customer = t.id_customer
 join rf_status s on t.status_bayar = s.id_status;
 
+-- sp product
 
+DELIMITER //
+CREATE PROCEDURE SP_INSERT_PRODUK(
+idKategori int(6),
+namaProduk VARCHAR(50),
+namaGambar VARCHAR(100),
+hargaProduk int(10),
+stokProduk int(10),
+sizeProduk VARCHAR(50),
+deskripsiProduk VARCHAR(200),
+idStok int(6),
+isInsert BOOLEAN
+)
+BEGIN
+IF (isInsert) THEN
+    INSERT INTO produk (nama, harga, deskripsi, id_kategori, nama_gambar)
+    VALUES (namaProduk, hargaProduk, deskripsiProduk,idKategori , namaGambar );
+
+    SELECT @lastId := MAX(id_produk) From produk;
+
+    IF(idKategori != 1) THEN
+        INSERT INTO stok (id_produk, size, stok)
+        VALUES (@lastId, NULL, stokProduk); 
+    ELSE
+        INSERT INTO stok (id_produk, size, stok)
+        VALUES (@lastId, sizeProduk, stokProduk);
+    end if ;
+ELSE
+    SELECT @idProduk := id_produk from stok where id_stok = idStok;
+    UPDATE produk SET nama = namaProduk, harga  = hargaProduk , deskripsi = deskripsiProduk,
+                      id_kategori = id_kategori , nama_gambar = namaGambar WHERE id_produk = @idProduk;
+
+    IF(idKategori != 1) THEN
+    UPDATE stok set size = NULL, stok = stokProduk WHERE  id_stok = idStok;
+    ELSE
+    UPDATE stok set size = sizeProduk, stok = stokProduk WHERE  id_stok = idStok;
+    end if ;
+
+
+end if ;
+END //
+
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE SP_DELETE_DATA(
+    idStok int(6),
+    idTransaksai int(6),
+    isTransaksi BOOLEAN
+)
+BEGIN
+    IF(isTransaksi) THEN
+        -- delete transaksi
+        DELETE FROM kurir WHERE id_kurir = 999;
+    ELSE
+        SELECT @idProduk := id_produk from stok where id_stok = idStok;
+        DELETE FROM STOK WHERE id_stok = idStok;
+        DELETE FROM produk WHERE id_produk = @idProduk;
+    END IF ;
+
+END //
+
+DELIMITER ;
 
 
 

@@ -38,6 +38,7 @@ $dataStore = getTableData($koneksi, $table2, $page, $dataPerPage);
     }    
 
 
+
 ?>
 
 <style>
@@ -98,9 +99,11 @@ $dataStore = getTableData($koneksi, $table2, $page, $dataPerPage);
                 <strong>Alamat : <?php echo $data['alamat'];?></strong><br>
                 Kurir : <?php echo $data['nama_kurir'];?><br>
                 Biaya ongkir: <?php echo $data['harga_ongkir'];?>
+                
                 </div>
                 </div>
-
+<div class="row">
+    <p>
     <table class=" table table-bordered"> 
         <thead>
             <tr>
@@ -128,17 +131,22 @@ $dataStore = getTableData($koneksi, $table2, $page, $dataPerPage);
             <?php }?>
         </tbody>
     </table>
+            </div>
     <div class="row">
-                            <!-- <form method="post" class="pilihan">
-                            <div class="form-group">
+                            <form method="post" class="pilihan">
+                            <!-- <div class="form-group">
                                 <label>Status</label>
                                 <select name="pesan" class="form-control">
                                     <option value="">Pilih Status</option>
                                     <option value="bisa pesan">Bisan Pesan</option>
                                     <option value="pesanan penuh">Pesanan Penuh</option>
                                 </select>
-                            </div> -->
+                            </div>  -->
+                            <div class="text-right">
+                            <button class="btn btn-danger" name="batal">Batal</button>
                             <button class="btn btn-primary" name="proses">Proses</button>
+                            <button class="btn btn-success" name="selesai">Selesai</button>
+                            </div>
                             </form>
                         </div>
 
@@ -154,7 +162,7 @@ $dataStore = getTableData($koneksi, $table2, $page, $dataPerPage);
                         }
                         ?>
 
-    <div class="alert alert-info" role="alert" >
+   <p> <div class="alert alert-info" role="alert" >
   Bisa langsung diprint dan disimpan dengan menekan ctrl + P
 </div>
     </div>

@@ -64,7 +64,7 @@ include "../templates/header.php"; ?>
 		<label class="control-label col-md-2 col-sm-2 col-xs-12" for="first-name">Nama kurir <span class="required">*</span>
 		</label>
 		<div class="col-md-10 col-sm-10 col-xs-12">
-		  <input type="text" id="first-name" name="nama_kurir" value="<?php echo $data['nama'] ;?>" required="required" class="form-control col-md-7 col-xs-12">
+		  <input type="text" id="first-name" name="nama" value="<?php echo $data['nama'] ;?>" required="required" class="form-control col-md-7 col-xs-12">
 		</div>
 	  </div>
 

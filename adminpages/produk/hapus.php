@@ -2,8 +2,8 @@
     include "../../lib/config_web.php";
     include "../../lib/koneksi.php";
 
-    $idProduk = $_GET['id_produk'];
-    $queryHapus = mysqli_query($koneksi, "DELETE FROM tbl_produk WHERE id_produk='$idProduk'");
+    $idStok = $_GET['id_stok'];
+    $queryHapus = mysqli_query($koneksi, "CALL SP_DELETE_DATA ($idStok , null, false )");
     if ($queryHapus) {
         echo "<script> alert('Data Produk Berhasil Dihapus'); window.location = '$admin_url'+'produk/main.php';</script>";
     } else {

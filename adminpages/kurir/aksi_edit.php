@@ -5,10 +5,10 @@
 
 	// untuk menangkap variabel 'nama_kurir' dan 'id_kurir' yang dikirim oleh form_edit.php
 	$id_kurir = $_POST['id_kurir'];
-	$nama_kurir = $_POST['nama_kurir'];
+	$nama = $_POST['nama'];
 	// query untuk mengubah ke tabel tbl_kurir
 	
-	$querySimpan = mysqli_query($koneksi, "UPDATE kurir SET nama_kurir='$nama_kurir' WHERE id_kurir='$id_kurir'");
+	$querySimpan = mysqli_query($koneksi, "UPDATE kurir SET nama ='$nama' WHERE id_kurir='$id_kurir'");
 
 	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar kurir
 	if ($querySimpan) {

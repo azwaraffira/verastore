@@ -3,28 +3,28 @@
 	include "../../lib/config_web.php";
 	include "../../lib/koneksi.php";
 
-	// untuk menangkap variabel 'nama_kategori' dan 'id_kategori' yang dikirim oleh form_edit.php
-	$id_produk = $_POST['id_produk'];
-	$namaKategori = $_POST['nama_kategori'];
+	// untuk menangkap variabel 'nama_kategori' yang dikirim oleh form_tambah.php
+	$id_stok = $_POST['id_stok'];
+	$idKategori = $_POST['id_kategori'];
 	$namaProduk = $_POST['nama_produk'];
-	$fileName = $_FILES['gambar']['name'];
 	$harga = $_POST['harga'];
 	$deskripsi = $_POST['deskripsi'];
-	// query untuk mengubah ke tabel tbl_kategori
-	if($fileName==""){
-		$querySimpan = mysqli_query($koneksi, "UPDATE tbl_produk SET id_kategori='$namaKategori', nama_produk='$namaProduk', harga='$harga', deskripsi='$deskripsi' WHERE id_produk='$id_produk'");
+	$size = $_POST['size'];
+	$stok = $_POST['stok'];
+	$idStok = $_POST['id_stok'];
+	if($idKategori==1 ){
+		if($size === null || $size === ""){
+		echo "<script> alert('Kategori gamis, Size tidak boleh kosong!'); window.location = '$admin_url'+'produk/form_edit.php?id_stok=$id_stok';</script>";
+		}
+	}
+	
+	$querySimpan = mysqli_query($koneksi, "CALL SP_INSERT_PRODUK ($idKategori, '$namaProduk', NULL, $harga, $stok, '$size', '$deskripsi', $idStok, FALSE)");
 	
 
-} else {
-	$querySimpan = mysqli_query($koneksi, "UPDATE tbl_produk SET id_kategori='$namaKategori', nama_produk='$namaProduk', harga='$harga', gambar='$fileName', deskripsi='$deskripsi' WHERE id_produk='$id_produk'");
-	
-	move_uploaded_file($_FILES['gambar']['tmp_name'], "../../file/produk/".$_FILES['gambar']['name']);
-}
-	// jika query berhasil maka akan tampil alert dan halaman akan kembali ke daftar kategori
 	if ($querySimpan) {
 		echo "<script> alert('Data Produk Berhasil Diubah'); window.location = '$admin_url'+'produk/main.php';</script>";
 		// jika query gagal, akan tampil alert dan halaman akan diarahkan ke form edit kategori
 	} else {
-		echo "<script> alert('Data Produk Gagal Dimasukkan'); window.location = '$admin_url'+'produk/form_edit.php?id_produk=$id_produk';</script>";
+		echo "<script> alert('Data Produk Gagal Dimasukkan'); window.location = '$admin_url'+'produk/form_edit.php?id_stok=$id_stok';</script>";
 	}
 ?>
