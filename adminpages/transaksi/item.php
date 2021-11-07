@@ -142,10 +142,24 @@ $dataStore = getTableData($koneksi, $table2, $page, $dataPerPage);
                                     <option value="pesanan penuh">Pesanan Penuh</option>
                                 </select>
                             </div>  -->
+                            
                             <div class="text-right">
-                            <button class="btn btn-danger" name="batal">Batal</button>
-                            <button class="btn btn-primary" name="proses">Proses</button>
-                            <button class="btn btn-success" name="selesai">Selesai</button>
+                            <?php 
+                            if( $data['id_status_pembayaran'] == 3){  ; ?>
+
+                                <button class="btn btn-danger" name="batal">Batal</button>
+                                <button class="btn btn-success" name="selesai">Selesai</button>
+                                <?php }else if( $data['id_status_pembayaran'] == 4){?>
+                                <button class="btn btn-primary" name="proses">Proses</button>
+                                <button class="btn btn-danger" name="batal">Batal</button>
+                                <?php }else if( $data['id_status_pembayaran'] == 5){?>
+                                <button class="btn btn-primary" name="proses">Proses</button>
+                                <button class="btn btn-success" name="selesai">Selesai</button>
+                                <?php }else{?>
+                                    <button class="btn btn-primary" name="proses">Proses</button>
+                                    <button class="btn btn-success" name="selesai">Selesai</button>
+                                    <button class="btn btn-danger" name="batal">Batal</button>
+                            <?php } ?>
                             </div>
                             </form>
                         </div>
@@ -153,12 +167,17 @@ $dataStore = getTableData($koneksi, $table2, $page, $dataPerPage);
                         <?php
                         if (isset($_POST["proses"]))
                         {
-                        $status=$_POST["pesan"];
-                        $koneksi->query("UPDATE pesanan SET status='$status'
-                        WHERE id_pesanan='$idpsn'");
-
-                        echo"<script>alert('data pesanan terupdate');</script>";
-                        echo"<script>location='main.php'</script>";
+                        $msg = updateStatus($koneksi, $data['id_transaksi'], 3);
+                        echo"<script>alert('$msg');</script>";
+                        echo"<script> window.location = '$admin_url'+'transaksi/main.php';</script>";
+                        }else if(isset($_POST["selesai"])){
+                            $msg = updateStatus($koneksi, $data['id_transaksi'], 4);
+                            echo"<script>alert('$msg');</script>";
+                        echo"<script> window.location = '$admin_url'+'transaksi/main.php';</script>";
+                        }else if(isset($_POST["batal"])){
+                            $msg = updateStatus($koneksi, $data['id_transaksi'], 5);
+                            echo"<script>alert('$msg');</script>";
+                        echo"<script> window.location = '$admin_url'+'transaksi/main.php';</script>";
                         }
                         ?>
 
