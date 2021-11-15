@@ -29,7 +29,7 @@ include "service/cart.php";
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
                         style="background-image: url(img/bg-img/bg-2.jpg);">
                         <div class="catagory-content">
-                            <a href="#">Jilbab</a>
+                            <a href="jilbab.php">Jilbab</a>
                         </div>
                     </div>
                 </div>
@@ -38,7 +38,7 @@ include "service/cart.php";
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
                         style="background-image: url(img/bg-img/bg-3.jpg);">
                         <div class="catagory-content">
-                            <a href="#">Gamis</a>
+                            <a href="gamis.php">Gamis</a>
                         </div>
                     </div>
                 </div>
@@ -47,7 +47,7 @@ include "service/cart.php";
                     <div class="single_catagory_area d-flex align-items-center justify-content-center bg-img"
                         style="background-image: url(img/bg-img/bg-4.jpg);">
                         <div class="catagory-content">
-                            <a href="#">Mukena</a>
+                            <a href="mukena.php">Mukena</a>
                         </div>
                     </div>
                 </div>
@@ -62,19 +62,7 @@ include "service/cart.php";
         <div class="container">
             <div class="row">
                 <div class="col-12">
-                    <div class="section-heading text-center">
-                        <h2>Popular Products</h2>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="container">
-            <div class="row">
-                <div class="col-12">
                     <div class="popular-products-slides owl-carousel">
-
-                       
                         <!-- Single Product -->
                         <!-- <div class="single-product-wrapper"> -->
                             <!-- Product Image -->
@@ -116,6 +104,68 @@ include "service/cart.php";
         </div>
     </section>
     <!-- ##### New Arrivals Area End ##### -->
+
+    <!-- ##### New Arrivals Area Start ##### -->
+    <section class="new_arrivals_area section-padding-80 clearfix">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-heading text-center">
+                        <h2>Popular Products</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="popular-products-slides owl-carousel">
+                    
+                    <?php
+						include "lib/koneksi.php";
+						$sql = 'SELECT id_produk, nama, harga, nama_gambar FROM produk';
+                        $query = mysqli_query($koneksi, $sql);
+                        if (!$query) {
+                            die ('SQL Error: ' . mysqli_error($koneksi));
+                        }
+                        while ($r = mysqli_fetch_assoc($query)) {
+                        echo '
+
+                        <div class="single-product-wrapper">
+                            <!-- Product Image -->
+                            <div class="product-img">
+                                <img src="img/'.$r['nama_gambar'].'" alt="">
+                                <!-- Hover Thumb -->
+                                <img class="hover-img" src="'.$r['nama_gambar'].'" alt="">
+                                <!-- Favourite -->
+                                <div class="product-favourite">
+                                    <a href="#" class="favme fa fa-heart"></a>
+                                </div>
+                            </div>
+                            <!-- Product Description -->
+                            <div class="product-description">
+                                 
+                                <a href="detail_produk.php?id_produk='.$r['id_produk'].'">
+                                    <h6>'.$r['nama'].'</h6>
+                                </a>
+                                <p class="product-price">Rp. '.number_format($r['harga'], 0, ',', '.').'</p>
+
+                                <!-- Hover Content -->
+                                <div class="hover-content">
+                                    <!-- Add to Cart -->
+                                    <div class="add-to-cart-btn">
+                                        <a href="#" class="btn essence-btn">Add to Cart</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        ';
+                        $no++;
+                        }
+                     ?>
+            </div>
+        </div>
+    </section>
 <?php
 include "templates/footer.php";
 ?>

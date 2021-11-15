@@ -1,6 +1,6 @@
 <?php
-include "../lib/config_web.php";
-include "../templates/header.php";
+include "lib/config_web.php";
+include "templates/header.php";
 include "cart.php";
 ?>
 <!-- ##### Breadcumb Area Start ##### -->
@@ -29,19 +29,19 @@ include "cart.php";
                         <h5>Sign In Here</h5>
                     </div>
 
-                    <form action="#" method="post">
+                    <form action="aksi_login.php" method="post">
                         <div class="row">
 
                             <div class="col-12 mb-3">
                                 <label for="company">E-mail</label>
-                                <input type="text" class="form-control" id="email" value="">
+                                <input type="text" class="form-control" id="email" value="" name="email">
                             </div>
                             <div class="col-12 mb-4">
                                 <label for="email_address">Password</label>
-                                <input type="password" class="form-control" id="email_address" value="">
+                                <input type="password" class="form-control" id="email_address" value="" name ="passwd">
                             </div>
                             <div class="col-12">
-                                <a href="#" class="btn essence-btn">Register</a>
+                                <a href="#" class="btn essence-btn">Log In</a>
                             </div>
                         </div>
                     </form>
